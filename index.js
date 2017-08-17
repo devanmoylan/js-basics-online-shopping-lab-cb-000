@@ -18,21 +18,23 @@ function addToCart(item) {
 
 
 function viewCart() {
+    getCart();
     if (cart.length === 0) {
-        console.log('Your shopping cart is empty.');
-    } else {
-
-        var cartList = [];
-
-        for (let i = 0; i < cart.length; i++) {
-            key = Object.keys(cart)[i];
-            value = cart[key];
-            cartList.push(`${key} at $${value}`)
-        }
-        if (cartList.length === 1 ) {
-            return `In your cart, you have ${cartList[0]}.`
-        }
+        console.log("Your shopping cart is empty.");
     }
+
+    var cartItems = [];
+
+    for (var i = 0; i < cart.length; i++) {
+        item = cart[i];
+        key = Object.keys(item);
+        value = item[key];
+        cartItems.push(key + " at $" + value);
+    } if (cartItems.length === 1) {
+        console.log(`In your cart, you have ${cartItems[0]}`)
+    }
+
+    console.log("In your cart, you have " + cartItems.join(", ") + ".");
 }
 
 function total() {
