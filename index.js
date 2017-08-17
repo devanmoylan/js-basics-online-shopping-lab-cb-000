@@ -1,5 +1,5 @@
 var cart = [];
-var item = "shoe";
+
 function getCart() {
     return cart;
 }
@@ -19,11 +19,18 @@ function addToCart(item) {
 
 function viewCart() {
     if (cart.length === 0) {
-        return 'Your shopping cart is empty.'
+        console.log('Your shopping cart is empty.');
     } else {
-        var cartList = []
+
+        var cartList = [];
+
         for (let i = 0; i < cart.length; i++) {
-          cartList.push(`${Object.keys(cart)[i]} at ${cart[i]}`)
+            key = Object.keys(cart)[i];
+            value = cart[key];
+            cartList.push(`${key} at $${value}`)
+        }
+        if (cartList.length === 1 ) {
+            return `In your cart, you have ${cartList[0]}.`
         }
     }
 }
@@ -39,3 +46,4 @@ function removeFromCart(item) {
 function placeOrder(cardNumber) {
     // write your code here
 }
+
